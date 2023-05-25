@@ -12,6 +12,14 @@ public class Proyectil : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (Movimiento.mirandoIzq)
+        {
+            angulo = 90;
+        }
+        else
+        {
+            angulo = 45;
+        }
         velX = Mathf.Cos(angulo) * velocidadInicial;
         velY = Mathf.Sin(angulo) * velocidadInicial;  
     }
