@@ -247,9 +247,10 @@ GameObject:
   - component: {fileID: 303276943}
   - component: {fileID: 303276946}
   - component: {fileID: 303276947}
+  - component: {fileID: 303276948}
   m_Layer: 0
   m_Name: Character
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -385,6 +386,19 @@ MonoBehaviour:
   capaSuelo:
     serializedVersion: 2
     m_Bits: 64
+--- !u!114 &303276948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 303276942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 953ebd41d7d100546997c2ecd09a86ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  proyectilPrefab: {fileID: 430576379294333221, guid: ed8accc94e85a01499ac830d685cc053, type: 3}
 --- !u!1 &519121967
 GameObject:
   m_ObjectHideFlags: 0
