@@ -13,6 +13,9 @@ public class Movimiento : MonoBehaviour
     
     private float horizontal;
     private Rigidbody2D rb2D;
+
+    public static bool mirandoIzq = false;
+    public static bool mirandoDer = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +31,18 @@ public class Movimiento : MonoBehaviour
         rb2D.velocity = new Vector2(direccion * velocidad, rb2D.velocity.y);
         if (Input.GetKeyDown(KeyCode.UpArrow) && EstaEnSuelo()){ 
             rb2D.AddForce(Vector2.up * fuerzaSalto, ForceMode2D.Impulse);
+        }
+        if ((Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A)) && !mirandoIzq)
+        {
+            gameObject.transform.Rotate(0, 180, 0);
+            mirandoIzq = true;
+            mirandoDer = false;
+        }
+        if ((Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D)) && !mirandoDer)
+        {
+            gameObject.transform.Rotate(0, 180, 0);
+            mirandoIzq = false;
+            mirandoDer = true;
         }
     }
 
