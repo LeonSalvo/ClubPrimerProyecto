@@ -5,12 +5,6 @@ using UnityEngine;
 public class LanzarProyectil : MonoBehaviour
 {
     [SerializeField] private GameObject proyectilPrefab;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {

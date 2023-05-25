@@ -8,17 +8,14 @@ public class Movimiento : MonoBehaviour
     [SerializeField] private float fuerzaSalto;
     [SerializeField] private LayerMask capaSuelo;
     private BoxCollider2D boxCollider;
-
     private float direccion;    
     
-    private float horizontal;
     private Rigidbody2D rb2D;
     // Start is called before the first frame update
     void Start()
     {
         rb2D = GetComponent<Rigidbody2D>(); 
         boxCollider = GetComponent<BoxCollider2D>();
-
     }
 
     // Update is called once per frame
