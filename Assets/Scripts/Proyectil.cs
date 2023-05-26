@@ -9,9 +9,12 @@ public class Proyectil : MonoBehaviour
     [SerializeField] private float gravedad;
     private float velX, velY;
 
+    GameObject player;
+
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.FindWithTag("Player");
         if (Movimiento.mirandoIzq)
         {
             angulo = 90;
@@ -39,6 +42,7 @@ public class Proyectil : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.tag != "Player"){
             Destroy(gameObject);
+            player.SendMessage("RecibirDaño", 20);
         }
     }
 }
