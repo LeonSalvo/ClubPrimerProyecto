@@ -163,5 +163,6 @@ MonoBehaviour:
   suelo:
     serializedVersion: 2
     m_Bits: 64
+  distanciaAgro: 10
   varX: 100
   varY: 300
