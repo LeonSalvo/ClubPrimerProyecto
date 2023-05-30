@@ -37,12 +37,18 @@ public class Proyectil : MonoBehaviour
         newPos.y += velY * Time.deltaTime;
 
         transform.position = newPos;
+
+        if (gameObject.transform.position.y < -5)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        if (other.tag != "Player"){
+        if (other.tag == "Enemigo"){
             Destroy(gameObject);
             player.SendMessage("RecibirDaño", 20);
+            other.GetComponent<Animator>().SetTrigger("Muerto");
         }
     }
 }

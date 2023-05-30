@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Piso
   - Proyectil
+  - Enemigo
   layers:
   - Default
   - TransparentFX
