@@ -6,22 +6,62 @@ using static UnityEngine.GraphicsBuffer;
 public class Enemigo : MonoBehaviour
 {
     public GameObject player;
-    public float speed = 1f;
+    [SerializeField] private float fuerzaSalto;
+    [SerializeField] private LayerMask suelo;
+    [SerializeField] private float distanciaAgro;
+    [SerializeField] private float varX;
+    [SerializeField] private float varY;
+    private Rigidbody2D rb;
+    private Transform playerTransform;
+    private bool puedeSaltar;
+    private CircleCollider2D circleCollider; 
+    private float distanciaAlJugador;
+    private bool playerALaDerecha;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        rb = GetComponent<Rigidbody2D>();
+        playerTransform = GameObject.FindWithTag("Player").transform;
+        circleCollider = GetComponent<CircleCollider2D>();
+        puedeSaltar = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        gameObject.transform.LookAt(player.transform.position);
-        gameObject.transform.Rotate(new Vector3(0, -90, 0), Space.Self);
-        if (Vector3.Distance(transform.position, player.transform.position) > 1f) //move if distance from target is greater than 1
-        {
-            transform.Translate(new Vector3(speed * Time.deltaTime, 0, 0));
+        if (playerTransform.position.x > transform.position.x){
+            playerALaDerecha = true;
+        }else{
+            playerALaDerecha = false;
         }
+        distanciaAlJugador = Vector2.Distance(transform.position, playerTransform.position);
+
+        if (distanciaAlJugador < distanciaAgro && EstaEnSuelo()){
+            puedeSaltar = true;
+        }
+    }
+    private void FixedUpdate() {
+        if (puedeSaltar){
+            /* gameObject.transform.LookAt(player.transform.position);
+            gameObject.transform.Rotate(new Vector3(0, -90, 0), Space.Self); */
+            rb.velocity = new Vector2(0,0);
+            if (playerALaDerecha){
+                rb.AddForce(new Vector2(Mathf.Abs(Mathf.Cos(varX) * 1.5f), Mathf.Abs(Mathf.Sin(varY)*1.7f) * fuerzaSalto) , ForceMode2D.Impulse);
+            }else{
+                rb.AddForce(new Vector2(-(Mathf.Abs(Mathf.Cos(varX)) * 1.5f), Mathf.Abs(Mathf.Sin(varY)*1.7f) * fuerzaSalto) , ForceMode2D.Impulse);
+            }
+            
+            puedeSaltar = false;
+        }else{
+            rb.rotation = 0;
+            if(EstaEnSuelo()){
+                rb.velocity = new Vector2(0,0);
+            }
+        }
+    }
+    private bool EstaEnSuelo(){
+        RaycastHit2D raycastHit = Physics2D.BoxCast(circleCollider.bounds.center, new Vector2(circleCollider.bounds.size.x, circleCollider.bounds.size.y), 0f, Vector2.down, 0.1f, suelo); 
+        return raycastHit.collider != null;
     }
 }

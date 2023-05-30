@@ -23,9 +23,9 @@ public class Vida : MonoBehaviour
         
     }
 
-    void RecibirDaño(int daño)
+    void RecibirDaÃ±o(int daÃ±o)
     {
-        vidaActual += daño;
+        vidaActual += daÃ±o;
         barraVida.SetVida(vidaActual);
     }
 }
