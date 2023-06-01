@@ -25,6 +25,7 @@ public class Enemigo : MonoBehaviour
         playerTransform = GameObject.FindWithTag("Player").transform;
         circleCollider = GetComponent<CircleCollider2D>();
         puedeSaltar = false;
+        player = GameObject.FindWithTag("Player");
     }
 
     // Update is called once per frame
@@ -64,4 +65,13 @@ public class Enemigo : MonoBehaviour
         RaycastHit2D raycastHit = Physics2D.BoxCast(circleCollider.bounds.center, new Vector2(circleCollider.bounds.size.x, circleCollider.bounds.size.y), 0f, Vector2.down, 0.1f, suelo); 
         return raycastHit.collider != null;
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            player.SendMessage("RecibirDanio", 20);
+        }
+    }
+
 }

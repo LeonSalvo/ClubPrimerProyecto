@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Vida : MonoBehaviour
@@ -17,15 +15,9 @@ public class Vida : MonoBehaviour
         barraVida.SetVida(vidaActual);
     }
 
-    // Update is called once per frame
-    void Update()
+    void RecibirDanio(int danio)
     {
-        
-    }
-
-    void RecibirDaño(int daño)
-    {
-        vidaActual += daño;
+        vidaActual += danio;
         barraVida.SetVida(vidaActual);
     }
 }
