@@ -47,7 +47,7 @@ public class Proyectil : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.tag == "Enemigo"){
             Destroy(gameObject);
-            player.SendMessage("RecibirDanio", 20);
+            player.SendMessage("RecibirAzucaruro", 20);
             other.GetComponent<Animator>().SetTrigger("Muerto");
         }
         else if (other.tag == "Piso"){
