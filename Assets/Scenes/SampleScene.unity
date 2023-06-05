@@ -472,7 +472,7 @@ MonoBehaviour:
   maxVida: 100
   vidaActual: 0
   barraVida: {fileID: 807674137}
---- !u!114 &303276947
+--- !u!114 &303276950
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -491,7 +491,7 @@ MonoBehaviour:
   maxVida: 100
   vidaActual: 0
   barraVida: {fileID: 807674137}
---- !u!114 &303276950
+--- !u!114 &303276947
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
