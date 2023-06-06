@@ -564,6 +564,7 @@ MonoBehaviour:
   jeringa: {fileID: 488649553}
   distanciaAtaque: 1.5
   duracion: 0.125
+  fuerzaEmpuje: 7.5
   estaAtacando: 0
 --- !u!114 &303276951
 MonoBehaviour:
@@ -1849,7 +1850,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2584395088273167796, guid: e5c2a35559afac64f8b0107265daeb23, type: 3}
       propertyPath: m_Name
-      value: Enemigo
+      value: Marshmallow
       objectReference: {fileID: 0}
     - target: {fileID: 5507769721330835114, guid: e5c2a35559afac64f8b0107265daeb23, type: 3}
       propertyPath: m_Constraints

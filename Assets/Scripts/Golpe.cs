@@ -7,11 +7,11 @@ public class Golpe : MonoBehaviour
     [SerializeField] private GameObject jeringa; // Referencia al objeto de la lanza en Unity
     [SerializeField] private float distanciaAtaque = 1f; // Distancia recorrida por el ataque
     [SerializeField] private float duracion = 0.5f;  // Duración del ataque en segundos
+    [SerializeField] private float fuerzaEmpuje;
     public bool estaAtacando = false; // Variable para controlar el estado del ataque
     private float temporizador = 0f; // Temporizador para controlar la duración del ataque
     private Rigidbody2D rb;
     private GameObject player;
-
     void Start(){
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindWithTag("Player");
@@ -72,9 +72,20 @@ public class Golpe : MonoBehaviour
         
     }
     private void OnTriggerEnter2D(Collider2D other) {
-        if (other.tag == "Enemigo"){
+        if (other.tag == "Marshmallow"){
             player.SendMessage("RecibirAzucaruro", 20);
-            other.GetComponent<Animator>().SetTrigger("Muerto");
+            Enemigo enemigo = other.GetComponent<Enemigo>();
+            enemigo.SendMessage("RecibirDanio", 20);
+            if (!enemigo.estaVivo){
+                other.GetComponent<Animator>().SetTrigger("Muerto");
+            }
+            empuje(enemigo);
         }
+    }
+    private void empuje(Enemigo empujado){
+        Vector3 direccion = (empujado.transform.position - transform.position);
+        direccion.Normalize();
+        empujado.GetComponent<Rigidbody2D>().AddForce(direccion * fuerzaEmpuje, ForceMode2D.Impulse);
+
     }
 }

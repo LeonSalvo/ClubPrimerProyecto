@@ -11,16 +11,19 @@ public class Enemigo : MonoBehaviour
     [SerializeField] private float distanciaAgro;
     [SerializeField] private float varX;
     [SerializeField] private float varY;
+    [SerializeField] private int vida;
+    public bool estaVivo;
     private Rigidbody2D rb;
     private Transform playerTransform;
     private bool puedeSaltar;
     private CircleCollider2D circleCollider; 
     private float distanciaAlJugador;
     private bool playerALaDerecha;
-
+    
     // Start is called before the first frame update
     void Start()
-    {
+    {   
+        estaVivo = true;
         rb = GetComponent<Rigidbody2D>();
         playerTransform = GameObject.FindWithTag("Player").transform;
         circleCollider = GetComponent<CircleCollider2D>();
@@ -43,9 +46,7 @@ public class Enemigo : MonoBehaviour
         }
     }
     private void FixedUpdate() {
-        if (puedeSaltar){
-            /* gameObject.transform.LookAt(player.transform.position);
-            gameObject.transform.Rotate(new Vector3(0, -90, 0), Space.Self); */
+        if (puedeSaltar && estaVivo){
             rb.velocity = new Vector2(0,0);
             if (playerALaDerecha){
                 rb.AddForce(new Vector2(Mathf.Abs(Mathf.Cos(varX) * 1.5f), Mathf.Abs(Mathf.Sin(varY)*1.7f) * fuerzaSalto) , ForceMode2D.Impulse);
@@ -68,9 +69,17 @@ public class Enemigo : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player") && estaVivo)
         {
             player.SendMessage("RecibirDanio", 20);
+        }
+    }
+    void RecibirDanio(int danio)
+    {
+        vida -= danio;
+        Debug.Log(vida);
+        if(vida <= 0){
+            estaVivo = false;
         }
     }
 

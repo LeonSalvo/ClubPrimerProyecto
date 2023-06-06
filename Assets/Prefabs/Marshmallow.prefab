@@ -15,8 +15,8 @@ GameObject:
   - component: {fileID: 5507769721330835115}
   - component: {fileID: 5507769721330835118}
   m_Layer: 0
-  m_Name: Enemigo
-  m_TagString: Enemigo
+  m_Name: Marshmallow
+  m_TagString: Marshmallow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -166,3 +166,5 @@ MonoBehaviour:
   distanciaAgro: 10
   varX: 100
   varY: 300
+  vida: 40
+  estaVivo: 0
