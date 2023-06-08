@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 2584395088273167786}
   - component: {fileID: 2584395088273167787}
   - component: {fileID: 5507769721330835114}
-  - component: {fileID: 5507769721330835115}
   - component: {fileID: 5507769721330835118}
+  - component: {fileID: 5291338479059775336}
   m_Layer: 0
   m_Name: Marshmallow
   m_TagString: Marshmallow
@@ -130,22 +130,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!58 &5507769721330835115
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2584395088273167796}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.037383717, y: -0.1570903}
-  serializedVersion: 2
-  m_Radius: 0.36158535
 --- !u!114 &5507769721330835118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,4 +151,31 @@ MonoBehaviour:
   varX: 100
   varY: 300
   vida: 40
+  fuerzaEmpuje: 5
   estaVivo: 0
+--- !u!61 &5291338479059775336
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2584395088273167796}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.0038030744, y: -0.15972614}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3, y: 1}
+    newSize: {x: 3, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.1061045, y: 0.6805477}
+  m_EdgeRadius: 0

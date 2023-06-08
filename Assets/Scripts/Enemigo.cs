@@ -12,11 +12,12 @@ public class Enemigo : MonoBehaviour
     [SerializeField] private float varX;
     [SerializeField] private float varY;
     [SerializeField] private int vida;
+    [SerializeField] private float fuerzaEmpuje;
     public bool estaVivo;
     private Rigidbody2D rb;
     private Transform playerTransform;
     private bool puedeSaltar;
-    private CircleCollider2D circleCollider; 
+    private BoxCollider2D boxCollider; 
     private float distanciaAlJugador;
     private bool playerALaDerecha;
     
@@ -26,7 +27,7 @@ public class Enemigo : MonoBehaviour
         estaVivo = true;
         rb = GetComponent<Rigidbody2D>();
         playerTransform = GameObject.FindWithTag("Player").transform;
-        circleCollider = GetComponent<CircleCollider2D>();
+        boxCollider = GetComponent<BoxCollider2D>();
         puedeSaltar = false;
         player = GameObject.FindWithTag("Player");
     }
@@ -63,7 +64,7 @@ public class Enemigo : MonoBehaviour
         }
     }
     private bool EstaEnSuelo(){
-        RaycastHit2D raycastHit = Physics2D.BoxCast(circleCollider.bounds.center, new Vector2(circleCollider.bounds.size.x, circleCollider.bounds.size.y), 0f, Vector2.down, 0.1f, suelo); 
+        RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, new Vector2(boxCollider.bounds.size.x, boxCollider.bounds.size.y), 0f, Vector2.down, 0.1f, suelo); 
         return raycastHit.collider != null;
     }
 
@@ -72,6 +73,9 @@ public class Enemigo : MonoBehaviour
         if (collision.gameObject.CompareTag("Player") && estaVivo)
         {
             player.SendMessage("RecibirDanio", 20);
+            Vector3 direccion = (transform.position - player.transform.position);
+            direccion.Normalize();
+            rb.AddForce(direccion * fuerzaEmpuje, ForceMode2D.Impulse);
         }
     }
     void RecibirDanio(int danio)
