@@ -5,7 +5,7 @@ using static UnityEngine.GraphicsBuffer;
 
 public class Enemigo : MonoBehaviour
 {
-    public GameObject player;
+    private GameObject player;
     [SerializeField] private float fuerzaSalto;
     [SerializeField] private LayerMask suelo;
     [SerializeField] private float distanciaAgro;
@@ -39,6 +39,7 @@ public class Enemigo : MonoBehaviour
 
         if (distanciaAlJugador < distanciaAgro && EstaEnSuelo()){
             puedeSaltar = true;
+            
         }
     }
     private void FixedUpdate() {
