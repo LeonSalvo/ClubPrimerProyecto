@@ -1,18 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ButtonManager : MonoBehaviour
 {
-    [SerializeField] GameObject Settings;
-    [SerializeField] private Slider VolumeSlider;
+    [SerializeField] private Slider MusicSlider;
+    [SerializeField] private TMP_Text MusicText;
+    
     [SerializeField] private Slider EffectSlider;
+    [SerializeField] private TMP_Text EffectText;
 
         
     public void Start()
     {
-        VolumeSlider.onValueChanged.AddListener (delegate {OnVolumeChange();});
+        MusicSlider.onValueChanged.AddListener (delegate {OnVolumeChange();});
         EffectSlider.onValueChanged.AddListener (delegate {OnEffectChange();});
     }
 	
@@ -30,11 +33,15 @@ public class ButtonManager : MonoBehaviour
     
     public void OnVolumeChange()
     {
-        Debug.Log (VolumeSlider.value);
+        UserSettings.MusicVol = MusicSlider.value;
+
+        MusicText.text = (int)(MusicSlider.value * 100) + "%";
     }
     
     public void OnEffectChange()
     {
-        Debug.Log (EffectSlider.value);
+        UserSettings.EffectVol = EffectSlider.value;
+
+        EffectText.text = (int)(EffectSlider.value * 100) + "%";
     }
 }
