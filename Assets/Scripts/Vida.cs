@@ -4,6 +4,7 @@ public class Vida : MonoBehaviour
 {
     public int maxVida = 100;
     public int vidaActual;
+    public Movimiento playerMovement;
 
     public BarraVida barraVida;
 
@@ -13,11 +14,14 @@ public class Vida : MonoBehaviour
         vidaActual = 1;
         barraVida.SetMaxVida(maxVida);
         barraVida.SetVida(vidaActual);
+        playerMovement = GetComponent<Movimiento>();
     }
 
     void RecibirDanio(int danio)
     {
-        vidaActual += danio;
-        barraVida.SetVida(vidaActual);
+        if(playerMovement.getCurrentState().Equals(Movimiento.State.Normal)){
+            vidaActual += danio;
+            barraVida.SetVida(vidaActual);
+        }
     }
 }

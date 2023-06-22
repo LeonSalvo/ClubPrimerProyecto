@@ -8,13 +8,17 @@ public class Golpe : MonoBehaviour
     [SerializeField] private float distanciaAtaque = 1f; // Distancia recorrida por el ataque
     [SerializeField] private float duracion = 0.5f;  // Duración del ataque en segundos
     [SerializeField] private float fuerzaEmpuje;
+
+    private Movimiento movement;
     public bool estaAtacando = false; // Variable para controlar el estado del ataque
     private float temporizador = 0f; // Temporizador para controlar la duración del ataque
     private Rigidbody2D rb;
     private GameObject player;
-    void Start(){
+    void Start()
+    {
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindWithTag("Player");
+        movement = player.GetComponent<Movimiento>();
         jeringa.transform.position = transform.position;
     }
     void Update()
@@ -51,12 +55,15 @@ public class Golpe : MonoBehaviour
         estaAtacando = false;
         jeringa.SetActive(false); // Desactiva la jeringa visualmente
         jeringa.transform.position = transform.position; // Vuelve la jeringa a la posición inicial
-        if(Input.GetKey(KeyCode.RightArrow) && !Movimiento.mirandoDer){
+        if (Input.GetKey(KeyCode.RightArrow) && !Movimiento.mirandoDer)
+        {
             transform.Rotate(0, 180, 0);
             Movimiento.mirandoIzq = false;
             Movimiento.mirandoDer = true;
 
-        }else if(Input.GetKey(KeyCode.LeftArrow) && !Movimiento.mirandoIzq){
+        }
+        else if (Input.GetKey(KeyCode.LeftArrow) && !Movimiento.mirandoIzq)
+        {
             transform.Rotate(0, 180, 0);
             Movimiento.mirandoIzq = true;
             Movimiento.mirandoDer = false;
@@ -69,20 +76,27 @@ public class Golpe : MonoBehaviour
         float velocidad = distancia / duracion;
         jeringa.transform.Translate(Vector2.right * velocidad);
 
-        
+
     }
-    private void OnTriggerEnter2D(Collider2D other) {
-        if (other.tag == "Marshmallow"){
-            player.SendMessage("RecibirAzucaruro", 20);
-            Enemigo enemigo = other.GetComponent<Enemigo>();
-            enemigo.SendMessage("RecibirDanio", 20);
-            if (!enemigo.estaVivo){
-                other.GetComponent<Animator>().SetTrigger("Muerto");
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (movement.getCurrentState().Equals(Movimiento.State.Normal))
+        {
+            if (other.tag == "Enemigo")
+            {
+                player.SendMessage("RecibirAzucaruro", 20);
+                Enemigo enemigo = other.GetComponent<Enemigo>();
+                enemigo.SendMessage("RecibirDanio", 20);
+                if (!enemigo.estaVivo)
+                {
+                    other.GetComponent<Animator>().SetTrigger("Muerto");
+                }
+                empuje(enemigo);
             }
-            empuje(enemigo);
         }
     }
-    private void empuje(Enemigo empujado){
+    private void empuje(Enemigo empujado)
+    {
         Vector3 direccion = (empujado.transform.position - transform.position);
         direccion.Normalize();
         empujado.GetComponent<Rigidbody2D>().AddForce(direccion * fuerzaEmpuje, ForceMode2D.Impulse);

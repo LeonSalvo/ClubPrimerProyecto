@@ -518,6 +518,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocidad: 10
   fuerzaSalto: 25
+  setSpeedBoost: 20
   capaSuelo:
     serializedVersion: 2
     m_Bits: 64
