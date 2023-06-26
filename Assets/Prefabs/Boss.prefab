@@ -47,19 +47,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 008fc873c2616e645a64482ca0bbddaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vida: 0
+  vida: 1000
   suelo:
     serializedVersion: 2
     m_Bits: 64
-  "da\xF1o": 0
-  "distanciaDa\xF1o": 0
-  "da\xF1oHabilidad1": 0
-  distanciaHabilidad1: 0
-  "da\xF1oHabilidad2": 0
-  distanciaHabilidad2: 0
-  "da\xF1oHabilidad3": 0
-  distanciaHabilidad3: 0
+  "da\xF1o": 25
+  "da\xF1oHabilidad1": 25
+  distanciaHabilidad1: 5
+  rangoHabilidad1: 5
+  "da\xF1oHabilidad2": 25
+  distanciaHabilidad2: 10
+  rangoHabilidad2: 5
+  "da\xF1oHabilidad3": 25
+  distanciaHabilidad3: 15
+  rangoHabilidad3: 5
   velocidad: 10
+  playerMask:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!50 &5774020776294968396
 Rigidbody2D:
   serializedVersion: 4

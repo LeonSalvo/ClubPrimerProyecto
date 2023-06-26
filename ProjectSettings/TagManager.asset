@@ -7,11 +7,12 @@ TagManager:
   - Piso
   - Proyectil
   - Enemigo
+  - Boss
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
   - suelo
