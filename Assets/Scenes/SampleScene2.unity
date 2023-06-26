@@ -266,7 +266,7 @@ GameObject:
   - component: {fileID: 298620426}
   m_Layer: 0
   m_Name: Square (1)
-  m_TagString: Untagged
+  m_TagString: Mapa
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -519,6 +519,8 @@ MonoBehaviour:
   velocidad: 10
   fuerzaSalto: 25
   setSpeedBoost: 20
+  reduceSlideSpeedMultiplier: 10
+  endSlide: 12
   capaSuelo:
     serializedVersion: 2
     m_Bits: 64
@@ -549,6 +551,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxVida: 100
   vidaActual: 0
+  playerMovement: {fileID: 0}
   barraVida: {fileID: 807674137}
 --- !u!114 &303276950
 MonoBehaviour:
@@ -1214,7 +1217,7 @@ GameObject:
   - component: {fileID: 993447164}
   m_Layer: 0
   m_Name: Square (2)
-  m_TagString: Untagged
+  m_TagString: Mapa
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1325,7 +1328,7 @@ GameObject:
   - component: {fileID: 999641676}
   m_Layer: 0
   m_Name: Square (3)
-  m_TagString: Untagged
+  m_TagString: Mapa
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1416,8 +1419,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 999641675}
   m_LocalRotation: {x: -0.008828478, y: -0.008850457, z: 0.70793, w: 0.706172}
-  m_LocalPosition: {x: -2.83, y: 0.36, z: 0.55}
-  m_LocalScale: {x: 10.539274, y: 0.73725414, z: 1}
+  m_LocalPosition: {x: -2.7686, y: 0.3601, z: 0.5515}
+  m_LocalScale: {x: 10.539274, y: 0.8602619, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1811,11 +1814,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2584395088273167785, guid: e5c2a35559afac64f8b0107265daeb23, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -11.598934
+      value: -11.11
       objectReference: {fileID: 0}
     - target: {fileID: 2584395088273167785, guid: e5c2a35559afac64f8b0107265daeb23, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.7577682
+      value: 0.12
       objectReference: {fileID: 0}
     - target: {fileID: 2584395088273167785, guid: e5c2a35559afac64f8b0107265daeb23, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1852,6 +1855,14 @@ PrefabInstance:
     - target: {fileID: 2584395088273167796, guid: e5c2a35559afac64f8b0107265daeb23, type: 3}
       propertyPath: m_Name
       value: Marshmallow
+      objectReference: {fileID: 0}
+    - target: {fileID: 2584395088273167796, guid: e5c2a35559afac64f8b0107265daeb23, type: 3}
+      propertyPath: m_TagString
+      value: Enemigo
+      objectReference: {fileID: 0}
+    - target: {fileID: 5291338479059775336, guid: e5c2a35559afac64f8b0107265daeb23, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5507769721330835114, guid: e5c2a35559afac64f8b0107265daeb23, type: 3}
       propertyPath: m_Constraints

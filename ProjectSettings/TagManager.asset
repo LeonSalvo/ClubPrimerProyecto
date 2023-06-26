@@ -8,6 +8,7 @@ TagManager:
   - Proyectil
   - Enemigo
   - Marshmallow
+  - Mapa
   layers:
   - Default
   - TransparentFX
